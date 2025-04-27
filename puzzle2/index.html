@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herbal Medicine Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        .quiz-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2a6496;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-left: 15px;
+        }
+        .option {
+            padding: 12px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+        }
+        .option:hover {
+            background-color: #f0f7ff;
+            border-color: #a8c6e0;
+        }
+        .option input {
+            margin-right: 12px;
+        }
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 30px;
+            background-color: #4a89dc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3b70c2;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .correct {
+            background-color: #e6ffed;
+            color: #28a745;
+            border: 1px solid #28a745;
+        }
+        .incorrect {
+            background-color: #ffe6e6;
+            color: #dc3545;
+            border: 1px solid #dc3545;
+        }
+        .next-point {
+            margin-top: 15px;
+            font-weight: normal;
+            color: #2a6496;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Herbal Medicine Quiz</h1>
+        <div class="question">Which of the following herbs is the best for having better effects against the liver?</div>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="herb" value="A"> A. Bupleurum
+            </label>
+            <label class="option">
+                <input type="radio" name="herb" value="B"> B. Goji Berry
+            </label>
+            <label class="option">
+                <input type="radio" name="herb" value="C"> C. Peony
+            </label>
+            <label class="option">
+                <input type="radio" name="herb" value="D"> D. Astragalus
+            </label>
+        </div>
+        <button onclick="checkAnswer()">Submit Answer</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="herb"]:checked');
+            const resultDiv = document.getElementById('result');
+            
+            if (!selectedOption) {
+                resultDiv.textContent = "Please select an answer!";
+                resultDiv.style.display = "block";
+                resultDiv.className = "incorrect";
+                return;
+            }
+            
+            if (selectedOption.value === "A") {
+                resultDiv.innerHTML = `
+                    ✓ Correct! Bupleurum is indeed one of the best herbs for liver protection.<br>
+                    <span class="next-point">Please go to the next point</span>
+                `;
+                resultDiv.className = "correct";
+            } else {
+                resultDiv.textContent = "✗ Incorrect. The correct answer is: A. Bupleurum.";
+                resultDiv.className = "incorrect";
+            }
+            
+            resultDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
